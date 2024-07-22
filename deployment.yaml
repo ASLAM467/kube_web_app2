@@ -25,6 +25,10 @@ spec:
           volumeMounts:
             - mountPath: "/app/data"
               name: django-storage
+        - name: spc2  # Second container
+          image: ${DJANGO_IMAGE2}  # Image for spc2 container
+          ports:
+            - containerPort: 9000
       volumes:
         - name: django-storage
           persistentVolumeClaim:
