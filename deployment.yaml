@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spc-deployment
+spec:
+  replicas: 1  # Number of replicas
+  selector:
+    matchLabels:
+      app: spc
+  template:
+    metadata:
+      labels:
+        app: spc
+        env: dev
+    spec:
+      containers:
+        - name: spc
+          image: ${DJANGO_IMAGE}
+          resources:
+            limits:
+              cpu: 500m
+              memory: 350Mi
+          ports:
+            - containerPort: 8000
+          volumeMounts:
+            - mountPath: "/app/data"
+              name: django-storage
+      volumes:
+        - name: django-storage
+          persistentVolumeClaim:
+            claimName: django-pvc
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
