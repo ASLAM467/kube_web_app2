@@ -10,3 +10,6 @@ spec:
     - port: 8000
       targetPort: 8000
       protocol: TCP
+    - port: 9000
+      targetPort: 9000
+      protocol: TCP
