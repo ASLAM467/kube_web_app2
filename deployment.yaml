@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: spc
-          image: itsw075/djangotest1:25thjuly_2
+          image: itsw075/djangotest1:25thjuly_3
           resources:
             limits:
               cpu: 500m
@@ -26,7 +26,7 @@ spec:
             - mountPath: "/app/data"
               name: django-storage
         - name: spc2
-          image: itsw075/djangotest2:25thjuly_2
+          image: itsw075/djangotest2:25thjuly_3
           ports:
             - containerPort: 9000
       volumes:
