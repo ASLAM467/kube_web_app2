@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: spc
-          image: "$(DJANGO_IMAGE)"  # Use environment variable reference
+          image: "${DJANGO_IMAGE}"  # Use environment variable reference
           resources:
             limits:
               cpu: 500m
@@ -26,7 +26,7 @@ spec:
             - mountPath: "/app/data"
               name: django-storage
         - name: spc2
-          image: "$(DJANGO_IMAGE2)"  # Use environment variable reference
+          image: "${DJANGO_IMAGE2}"  # Use environment variable reference
           ports:
             - containerPort: 9000
       volumes:
